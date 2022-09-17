@@ -8,14 +8,14 @@ SRIBU
 <!-- Header -->
 <header class="text-center">
   <h1>
-    Explore The Beautiful World
-    <br />
-    As Easy One Click
+    Buat liburan dan umrah anda
+    <br> 
+    lebih menyenangkan
   </h1>
   <p class="mt-3">
-    You will see beautiful
-    <br />
-    moment you never see before
+    Anda akan melihat momen 
+    <br>
+    yang belum pernah anda lihat sebelumnya
   </p>
   <a href="#popular" class="btn btn-get-started px-4 mt-4">
     Get started
@@ -27,11 +27,11 @@ SRIBU
     <section class="section-stats row justify-content-center rounded" id="stats">
       <div class="col-3 col-md-2 stats-detail">
         <h2>20K</h2>
-        <p>Members</p>
+        <p>Anggota</p>
       </div>
       <div class="col-3 col-md-2 stats-detail">
         <h2>12</h2>
-        <p>Countries</p>
+        <p>Negara</p>
       </div>
       <div class="col-3 col-md-2 stats-detail">
         <h2>3K</h2>
@@ -39,7 +39,7 @@ SRIBU
       </div>
       <div class="col-3 col-md-2 stats-detail">
         <h2>72</h2>
-        <p>Partners</p>
+        <p>Mitra</p>
       </div>
     </section>
   </div>
@@ -50,9 +50,9 @@ SRIBU
         <div class="col text-center section-popular-heading">
           <h2>Paket Wisata</h2>
           <p>
-            Something that you never try
-            <br />
-            before in this world
+            Sesuatu yang tidak pernah kamu coba
+            <br>
+            sebelumnya di dunia ini
           </p>
         </div>
       </div>
@@ -63,6 +63,7 @@ SRIBU
     <div class="container">
       <div class="section-popular-travel row justify-content-center">
         @foreach($items as $item)
+          @if ($item->category == 'Travel') 
             <div class="col-sm-6 col-md-4 col-lg-3">
               <div
                 class="card-travel text-center d-flex flex-column"
@@ -77,6 +78,45 @@ SRIBU
                 </div>
               </div>
             </div>
+          @endif
+        @endforeach
+      </div>
+    </div>
+  </section>
+
+  <section class="section-umrah" id="umrah">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center section-umrah-heading">
+          <h2>Paket Umrah</h2>
+          <p>
+            Pengalaman nyaman beribadah yang belum <br>pernah kamu rasakan sebelumnya
+          </p>
+        </div>
+      </div>
+    </div> 
+  </section>
+
+  <section class="section-umrah-content" id="umrahContent">
+    <div class="container">
+      <div class="section-umrah-travel row justify-content-center">
+        @foreach($items as $item)
+          @if ($item->category == 'Umrah')
+            <div class="col-sm-6 col-md-4 col-lg-3">
+              <div
+                class="card-travel text-center d-flex flex-column"
+                style="background-image: url('{{ $item->galleries->count() ? Storage::url($item->galleries->first()->image) : '' }}');"
+              >
+                <div class="travel-country">{{ $item->location }}</div>
+                <div class="travel-location">{{ $item->title }}</div>
+                <div class="travel-button mt-auto">
+                  <a href="{{ route('detail', $item->slug) }}" class="btn btn-travel-details px-4">
+                    View Details
+                  </a>
+                </div>
+              </div>
+            </div>
+          @endif
         @endforeach
       </div>
     </div>
@@ -200,13 +240,3 @@ SRIBU
   </section>
 </main>
 @endsection
-
-
-@push('addon-script')
-  <!-- Page level plugins -->
-  <script src="{{ url('backend/vendor/chart.js/Chart.min.js') }}"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="{{ url('backend/js/demo/chart-area-demo.js') }}"></script>
-  <script src="{{ url('backend/js/demo/chart-pie-demo.js') }}"></script>
-@endpush

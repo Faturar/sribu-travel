@@ -20,6 +20,14 @@ Route::get('/', 'HomeController@index')
 Route::get('/detail/{slug}', 'DetailController@index')
     ->name('detail');
 
+Route::get('/profile/{id}', 'ProfileController@index')
+    ->name('profile')
+    ->middleware('auth');
+
+Route::get('/order/{id}', 'OrderController@index')
+    ->name('order')
+    ->middleware('auth');
+
 Route::post('/checkout/{id}', 'CheckoutController@process')
     ->name('checkout_process')
     ->middleware(['auth', 'verified']);
@@ -49,7 +57,9 @@ Route::prefix('admin')
 
         Route::resource('travel-package', 'TravelPackageController');
         Route::resource('gallery', 'GalleryController');
+        Route::resource('category', 'CategoryController');
         Route::resource('transaction', 'TransactionController');
+        Route::resource('user', 'UserController');
     });
 
 Auth::routes(['verify' => true]);

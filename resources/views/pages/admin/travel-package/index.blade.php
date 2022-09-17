@@ -19,24 +19,26 @@
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                       <tr>
-                          <th>ID</th>
-                          <th>Title</th>
-                          <th>Location</th>
-                          <th>Type</th>
-                          <th>Departure Date</th>
-                          <th>Type</th>
+                          <th>No</th>
+                          <th>Nama</th>
+                          <th>Lokasi</th>
+                          <th>Tipe Perjalanan</th>
+                          <th>Tanggal Berangkat</th>
+                          <th>Tipe Perjalanan</th>
+                          <th>Kategori</th>
                           <th>Action</th>
                       </tr>
                       </thead>
                       <tbody>
-                      @forelse($items as $item)
+                        @forelse($items as $key => $item)
                           <tr>
-                              <td>{{ $item->id }}</td>
+                              <td>{{ $key+1 }}</td>
                               <td>{{ $item->title }}</td>
                               <td>{{ $item->location }}</td>
                               <td>{{ $item->type }}</td>
                               <td>{{ $item->departure_date }}</td>
                               <td>{{ $item->type }}</td>
+                              <td>{{ $item->category }}</td>
                               <td>
                                   <a href="{{ route('travel-package.edit', $item->id) }}" class="btn btn-info">
                                       <i class="fa fa-pencil-alt"></i>

@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\TravelPackageRequest;
-use App\TravelPackage;
+use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
-class TravelPackageController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,8 @@ class TravelPackageController extends Controller
      */
     public function index()
     {
-        $items = TravelPackage::all();
-
-        return view('pages.admin.travel-package.index',[
+        $items = User::all();
+        return view('pages.admin.user.index', [
             'items' => $items
         ]);
     }
@@ -32,7 +29,7 @@ class TravelPackageController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.travel-package.create');
+        return view('pages.admin.user.create');
     }
 
     /**
@@ -41,13 +38,16 @@ class TravelPackageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TravelPackageRequest $request)
+    public function store(Request $request)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
 
-        TravelPackage::create($data);
-        return redirect()->route('travel-package.index');
+        return dd($data);
+        $data['password'] = Hash::make($request['password']);
+
+        User::create($data);
+
+        return redirect()->route('user.index');
     }
 
     /**
@@ -58,7 +58,11 @@ class TravelPackageController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findorfail($id);
+
+        return view('pages.admin.user.detail', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -69,10 +73,10 @@ class TravelPackageController extends Controller
      */
     public function edit($id)
     {
-        $item = TravelPackage::findOrFail($id);
+        $user = User::findorfail($id);
 
-        return view('pages.admin.travel-package.edit',[
-            'item' => $item
+        return view('pages.admin.user.edit', [
+            'user' => $user
         ]);
     }
 
@@ -83,16 +87,19 @@ class TravelPackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TravelPackageRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
 
-        $item = TravelPackage::findOrFail($id);
+        if($data['password_change']) {
+            $data['password'] = Hash::make($request['password_change']);
+        }
 
-        $item->update($data);
+        $user = User::findorfail($id);
 
-        return redirect()->route('travel-package.index');
+        $user->update($data);
+
+        return redirect()->route('user.index');
     }
 
     /**
@@ -103,10 +110,9 @@ class TravelPackageController extends Controller
      */
     public function destroy($id)
     {
-        $item = TravelPackage::findorFail($id);
+        $item = User::findorFail($id);
         $item->delete();
 
-        return redirect()->route('travel-package.index');
-
+        return redirect()->route('user.index');
     }
 }

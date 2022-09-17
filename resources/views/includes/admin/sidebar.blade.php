@@ -18,6 +18,9 @@
       <span>Dashboard</span></a>
   </li>
 
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+
   <li class="nav-item">
     <a class="nav-link" href="{{ route('travel-package.index') }}">
       <i class="fas fa-fw fa-hotel"></i>
@@ -30,10 +33,21 @@
       <span>Galeri Travel</span></a>
   </li>
 
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+
   <li class="nav-item">
     <a class="nav-link" href="{{ route('transaction.index') }}">
       <i class="fas fa-fw fa-dollar-sign"></i>
       <span>Transaksi</span></a>
+  </li>
+
+  <hr class="sidebar-divider">
+
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('user.index') }}">
+      <i class="fas fa-fw fa-user"></i>
+      <span>User</span></a>
   </li>
 
   <hr class="sidebar-divider">

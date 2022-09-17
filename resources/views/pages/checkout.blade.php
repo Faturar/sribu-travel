@@ -26,15 +26,13 @@
       <div class="row">
         <div class="col-lg-8 pl-lg-0">
           <div class="card card-details">
-              @if ($errors->any())
+            @if ($errors->any())
+              @foreach ($errors->all() as $error)
                   <div class="alert alert-danger">
-                      <ul>
-                          @foreach ($errors->all() as $error)
-                              <li>{{ $error }}</li>
-                          @endforeach
-                      </ul>
+                      {{ $error }}
                   </div>
-              @endif
+              @endforeach
+            @endif
             <h1>Who is Going?</h1>
             <p>
               Trip to Ubud, Bali, Indonesia

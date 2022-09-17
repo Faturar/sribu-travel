@@ -19,19 +19,19 @@
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                       <tr>
-                          <th>ID</th>
+                          <th>No</th>
                           <th>Travel</th>
                           <th>Gambar</th>
                           <th>Action</th>
                       </tr>
                       </thead>
                       <tbody>
-                      @forelse($items as $item)
+                        @forelse($items as $key => $item)
                           <tr>
-                              <td>{{ $item->id }}</td>
+                              <td>{{ $key+1 }}</td>
                               <td>{{ $item->travel_package->title }}</td>
                               <td>
-                                  <img src="{{ Storage::url($item->image) }}" alt="" style="width: 200px" class="img-thumbnail">
+                                  <img src="{{ Storage::url($item->image) }}" alt="" style="max-height: 200px" class="img-fluid">
                               </td>
                               <td>
                                   <a href="{{ route('gallery.edit', $item->id) }}" class="btn btn-info">

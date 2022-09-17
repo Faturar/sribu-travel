@@ -31,10 +31,10 @@
           <div class="col-12 col-lg-3">
             <h5>GET CONNECTED</h5>
             <ul class="list-unstyled">
-              <li><a href="#">Jakarta Selatan</a></li>
+              <li><a href="#">Bogor</a></li>
               <li><a href="#">Indonesia</a></li>
               <li><a href="#">0821 - 2222 - 8888</a></li>
-              <li><a href="#">support@nomads.id</a></li>
+              <li><a href="#">support@sribu.com</a></li>
             </ul>
           </div>
         </div>

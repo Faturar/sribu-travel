@@ -47,7 +47,7 @@ body {
 header {
   padding: 180px 0 165px;
   margin-top: -70px;
-  background-image: url('../images/header.jpg');
+  background-image: url('../images/headers.jpg');
   background-size: cover;
 
   h1,
@@ -128,6 +128,68 @@ header {
 
 .section-popular-content {
   .section-popular-travel {
+    .card-travel {
+      min-height: 380px;
+      background-color: #ddd;
+      color: #fff;
+      padding: 30px;
+      background-size: cover;
+      margin-bottom: 20px;
+    }
+
+    .travel-country {
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .travel-location {
+      font-size: 26px;
+      color: #fff;
+    }
+
+    .travel-button {
+      .btn-travel-details {
+        background-color: #FF9E53;
+        color: #fff;
+
+        &:hover {
+          background-color: #FFAE6F;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+// umrah
+.section-umrah {
+  min-height: 540px;
+  margin-top: -50px;
+  margin-bottom: -230px;
+
+  .section-umrah-heading {
+    margin-top: 150px;
+
+    // h2,
+    // p {
+    //   color: #fff;
+    // }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+}
+
+.section-umrah-content {
+  .section-umrah-travel {
     .card-travel {
       min-height: 380px;
       background-color: #ddd;

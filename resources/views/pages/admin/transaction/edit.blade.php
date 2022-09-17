@@ -11,14 +11,13 @@
 
       <!-- Content Row -->
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">
+                    {{ $error }}
+                </div>
+            @endforeach
         @endif
+
         <div class="card shadow">
             <div class="card-body">
                 <form action="{{ route('transaction.update', $item->id) }}" method="post">
