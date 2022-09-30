@@ -87,7 +87,7 @@
                 <a href="/admin" class="dropdown-item">Dashboard</a>
               @endif
               
-              <a href="{{ route('order', Auth::user()->id) }}" class="dropdown-item">Profile</a>
+              <a href="{{ route('profile', Auth::user()->id) }}" class="dropdown-item">Profile</a>
               
               <a href="{{ route('order', Auth::user()->id) }}" class="dropdown-item">Pesanan</a>
               
