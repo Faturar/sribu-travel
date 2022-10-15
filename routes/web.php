@@ -24,8 +24,12 @@ Route::get('/profile/{id}', 'ProfileController@index')
     ->name('profile')
     ->middleware('auth');
 
-Route::get('/order/{id}', 'OrderController@index')
+Route::get('/order/{users_id}', 'OrderController@index')
     ->name('order')
+    ->middleware('auth');
+
+Route::get('/order/detail/{id}', 'OrderController@detail')
+    ->name('order_detail')
     ->middleware('auth');
 
 Route::post('/checkout/{id}', 'CheckoutController@process')
