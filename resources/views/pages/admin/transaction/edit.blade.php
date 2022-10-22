@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="title">Status</label>
                         <select name="transaction_status" required class="form-control">
-                            <option value="{{ $item->transaction_status }}">Jangan Ubah ({{ $item->transaction_status }})</option>
+                            <option value="{{ $item->transaction_status }}">Default ({{ $item->transaction_status }})</option>
                             <option value="IN_CART">In Cart</option>
                             <option value="PENDING">Pending</option>
                             <option value="SUCCESS">Success</option>

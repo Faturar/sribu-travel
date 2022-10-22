@@ -28,6 +28,7 @@ class CheckoutController extends Controller
             'travel_packages_id' => $id,
             'users_id' => Auth::user()->id,
             'additional_visa' => 0,
+            'additional_vaksin' => 0,
             'transaction_total' => $travel_package->price,
             'transaction_status' => 'IN_CART'
         ]);
@@ -81,8 +82,8 @@ class CheckoutController extends Controller
 
         if($request->is_visa)
         {
-            $transaction->transaction_total += 190;
-            $transaction->additional_visa += 190;
+            $transaction->transaction_total += 500000;
+            $transaction->additional_visa += 500000;
         }
 
         $transaction->transaction_total += $transaction->travel_package->price;

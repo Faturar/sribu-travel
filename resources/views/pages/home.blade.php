@@ -18,7 +18,7 @@ SRIBU
     yang belum pernah anda lihat sebelumnya
   </p>
   <a href="#popular" class="btn btn-get-started px-4 mt-4">
-    Get started
+    Mulai Sekarang
   </a>
 </header>
 
@@ -73,7 +73,7 @@ SRIBU
                 <div class="travel-location">{{ $item->title }}</div>
                 <div class="travel-button mt-auto">
                   <a href="{{ route('detail', $item->slug) }}" class="btn btn-travel-details px-4">
-                    View Details
+                    Selengkapnya
                   </a>
                 </div>
               </div>
@@ -111,7 +111,7 @@ SRIBU
                 <div class="travel-location">{{ $item->title }}</div>
                 <div class="travel-button mt-auto">
                   <a href="{{ route('detail', $item->slug) }}" class="btn btn-travel-details px-4">
-                    View Details
+                    Selengkapnya
                   </a>
                 </div>
               </div>
@@ -126,11 +126,10 @@ SRIBU
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <h2>Our Networks</h2>
+          <h2>Jaringan kami</h2>
           <p>
-            Companies are trusted us
-            <br />
-            more than just a trip
+            Perusahaan mempercayai kami
+            lebih dari sekedar perjalanan
           </p>
         </div>
         <div class="col-md-8 text-center">
@@ -148,11 +147,11 @@ SRIBU
     <div class="container">
       <div class="row">
         <div class="col text-center">
-          <h2>They Are Loving Us</h2>
+          <h2>Mereka Mencintai Kita</h2>
           <p>
-            Moments were giving them
+            Saat-saat memberi mereka
             <br />
-            the best experience
+            pengalaman terbaik
           </p>
         </div>
       </div>
@@ -175,13 +174,12 @@ SRIBU
               />
               <h3 class="mb-4">Ahmad Sofian</h3>
               <p class="testimonial">
-                “ It was glorious and I could not stop to say wohooo for
-                every single moment Dankeeeeee “
+                “ Luar biasa dan saya tidak bisa berhenti untuk mengatakan wow untuk setiap momen Terimakasih “
               </p>
             </div>
             <hr />
             <p class="trip-to mt-2">
-              Trip to Ubud
+              Perjalanan ke Ubud
             </p>
           </div>
         </div>
@@ -195,13 +193,12 @@ SRIBU
               />
               <h3 class="mb-4">Shayna</h3>
               <p class="testimonial">
-                “ The trip was amazing and I saw something beautiful in that
-                Island that makes me want to learn more “
+                “ Perjalanannya luar biasa dan saya melihat sesuatu yang indah di pulau itu yang membuat saya ingin belajar lebih banyak “
               </p>
             </div>
             <hr />
             <p class="trip-to mt-2">
-              Trip to Nusa Penida
+              Perjalanan ke Nusa Penida
             </p>
           </div>
         </div>
@@ -213,15 +210,14 @@ SRIBU
                 alt="User"
                 class="mb-4 rounded-circle"
               />
-              <h3 class="mb-4">Sabrina</h3>
+              <h3 class="mb-4">Rossa</h3>
               <p class="testimonial">
-                “ I loved it when the waves was shaking harder — I was
-                scared too “
+                “ Saya menyukainya ketika ombak berguncang lebih keras — tapi saya juga takut “
               </p>
             </div>
             <hr />
             <p class="trip-to mt-2">
-              Trip to Karimun Jawa
+              Perjalanan ke Karimun Jawa
             </p>
           </div>
         </div>
@@ -229,10 +225,10 @@ SRIBU
       <div class="row">
         <div class="col-12 text-center">
           <a href="#" class="btn btn-need-help px-4 mt-4 mx-1">
-            I Need Help
+            Butuh Bantuan
           </a>
           <a href="{{ route('register') }}" class="btn btn-get-started px-4 mt-4 mx-1">
-            Get Started
+            Mulai Sekarang
           </a>
         </div>
       </div>

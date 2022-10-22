@@ -13,7 +13,7 @@ class OrderController extends Controller
         ])->get();
 
         return view('pages.order', [
-            'items' => $items
+            'items' => $items,
         ]);
     }
 
@@ -25,5 +25,26 @@ class OrderController extends Controller
         return response()->json([
             'detail' => $detail,
         ]);
+    }
+
+    public function cancel(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $item = Transaction::findOrFail($id);
+
+        $item->update($data);
+
+        // return dd($item);
+
+        return redirect()->route('order', $item->users_id);
+    }
+
+    public function destroy($id) {
+        $item = Transaction::findorFail($id);
+        $users_id = $item->users_id;
+        $item->delete();
+
+        return redirect()->route('order', $users_id);
     }
 }

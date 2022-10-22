@@ -18,7 +18,7 @@
             @endforeach
         @endif
 
-        <div class="card shadow">
+        <div class="card shadow"> 
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
@@ -34,16 +34,32 @@
                         <td>{{ $item->user->name }}</td>
                     </tr>
                     <tr>
+                        <th>Email</th>
+                        <td>{{ $item->user->email }}</td>
+                    </tr>
+                    <tr>
+                        <th>No Handphone</th>
+                        <td>{{ $item->user->nomor_telepon }}</td>
+                    </tr>
+                    <tr>
                         <th>Additional Visa</th>
-                        <td>Rp. {{ $item->additional_visa }}</td>
+                        <td>{{ numfmt_format_currency(numfmt_create( 'id_ID', NumberFormatter::CURRENCY ), $item->additional_visa, "IDR") }}</td>
                     </tr>
                     <tr>
                         <th>Total Transaksi</th>
-                        <td>Rp. {{ $item->transaction_total }}</td>
+                        <td>{{ numfmt_format_currency(numfmt_create( 'id_ID', NumberFormatter::CURRENCY ), $item->transaction_total, "IDR") }}</td>
                     </tr>
                     <tr>
                         <th>Status Transaksi</th>
-                        <td>{{ $item->transaction_status }}</td>
+                        <td>
+                            @if ($item->transaction_status == 'PENDING')
+                                <span class="badge badge-danger">Pending</span>  
+                            @elseif($item->transaction_status == 'SUCCESS')
+                                <span class="badge badge-success">Success</span>
+                            @else
+                                <span class="badge badge-secondary">{{ $item->transaction_status }}</span>
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                         <th>Pembelian</th>

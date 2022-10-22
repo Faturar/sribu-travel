@@ -23,7 +23,7 @@
               id="navbardrop2"
               data-toggle="dropdown"
             >
-              {{ Auth::user()->name }}
+              {{ Auth::user()->username }}
             </a>
             <div class="dropdown-menu">
               <a href="#" class="dropdown-item">Pesanan</a>
@@ -80,11 +80,11 @@
               id="navbardrop2"
               data-toggle="dropdown"
             >
-              {{ Auth::user()->name }}
+              {{ Auth::user()->username }}
             </a>
             <div class="dropdown-menu">
-              @if (Auth::user()->roles == 'ADMIN')
-                <a href="/admin" class="dropdown-item">Dashboard</a>
+              @if (Auth::user()->roles == 'ADMIN' || Auth::user()->roles == 'SUPER_ADMIN')
+                <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
               @endif
               
               <a href="{{ route('profile', Auth::user()->id) }}" class="dropdown-item">Profile</a>

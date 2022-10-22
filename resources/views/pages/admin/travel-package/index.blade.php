@@ -19,7 +19,7 @@
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                       <tr>
-                          <th>No</th>
+                          <th>#</th>
                           <th>Nama</th>
                           <th>Lokasi</th>
                           <th>Tipe Perjalanan</th>

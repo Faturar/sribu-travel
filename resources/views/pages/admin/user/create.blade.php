@@ -35,6 +35,10 @@
                         <input type="text" class="form-control" name="username" placeholder="Username" value="{{ old('username') }}">
                     </div>
                     <div class="form-group">
+                        <label for="username">Nomor Telepon</label>
+                        <input type="number" class="form-control" name="nomor_telepon" placeholder="Nomor Telepon" value="{{ old('nomor_telepon') }}">
+                    </div>
+                    <div class="form-group">
                         <label for="roles">Roles</label>
                         <select class="custom-select" name="roles" id="roles">
                             <option selected>Pilih Role</option>

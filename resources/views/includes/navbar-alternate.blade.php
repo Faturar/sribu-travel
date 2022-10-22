@@ -9,7 +9,7 @@
     <ul class="navbar-nav mr-auto d-none d-lg-block">
       <li>
         <span class="text-muted">
-          | &nbsp; Beyond the explorer of the world
+          | &nbsp; Perjalanan dan Ibadah Yang Aman Serta Menyenangkan
         </span>
       </li>
     </ul>

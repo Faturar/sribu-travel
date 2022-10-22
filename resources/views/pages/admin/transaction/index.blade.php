@@ -16,7 +16,7 @@
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                       <tr>
-                          <th>No</th>
+                          <th>#</th>
                           <th>Travel</th>
                           <th>User</th>
                           <th>Visa</th>
@@ -31,13 +31,17 @@
                               <td>{{ $key+1 }}</td>
                               <td>{{ $item->travel_package->title }}</td>
                               <td>{{ $item->user->name }}</td>
-                              <td>Rp. {{ $item->additional_visa }}</td>
-                              <td>Rp. {{ $item->transaction_total }}</td>
+                              <td>{{ numfmt_format_currency(numfmt_create( 'id_ID', NumberFormatter::CURRENCY ), $item->additional_visa, "IDR") }}</td>
+                              <td>{{ numfmt_format_currency(numfmt_create( 'id_ID', NumberFormatter::CURRENCY ), $item->transaction_total, "IDR") }}</td>
                               <td>
                                 @if ($item->transaction_status == 'PENDING')
-                                    <span class="badge badge-danger">Pending</span>  
+                                    <span class="badge badge-primary">Pending</span>  
                                 @elseif($item->transaction_status == 'SUCCESS')
                                     <span class="badge badge-success">Success</span>
+                                @elseif($item->transaction_status == 'CANCEL')
+                                    <span class="badge badge-danger">Cancel</span>
+                                @elseif($item->transaction_status == 'IN_CART')
+                                    <span class="badge badge-secondary">In Cart</span>
                                 @else
                                     <span class="badge badge-secondary">{{ $item->transaction_status }}</span>
                                 @endif

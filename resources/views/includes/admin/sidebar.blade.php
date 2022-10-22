@@ -44,13 +44,14 @@
 
   <hr class="sidebar-divider">
 
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('user.index') }}">
-      <i class="fas fa-fw fa-user"></i>
-      <span>User</span></a>
-  </li>
-
-  <hr class="sidebar-divider">
+  @if (Auth::user()->roles == 'SUPER_ADMIN')
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('user.index') }}">
+        <i class="fas fa-fw fa-user"></i>
+        <span>User</span></a>
+    </li>
+    <hr class="sidebar-divider">
+  @endif
 
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">

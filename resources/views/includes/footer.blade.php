@@ -4,32 +4,32 @@
       <div class="col-12">
         <div class="row">
           <div class="col-12 col-lg-3">
-            <h5>FEATURES</h5>
+            <h5>FITUR</h5>
             <ul class="list-unstyled">
-              <li><a href="#">Reviews</a></li>
-              <li><a href="#">Community</a></li>
-              <li><a href="#">Social Media Kit</a></li>
-              <li><a href="#">Affiliate</a></li>
+              <li><a href="#">Review</a></li>
+              <li><a href="#">Komunitas</a></li>
+              <li><a href="#">Paket media sosial</a></li>
+              <li><a href="#">Afiliasi</a></li>
             </ul>
           </div>
           <div class="col-12 col-lg-3">
-            <h5>ACCOUNT</h5>
+            <h5>AKUN</h5>
             <ul class="list-unstyled">
-              <li><a href="#">Refund</a></li>
-              <li><a href="#">Security</a></li>
-              <li><a href="#">Reward</a></li>
+              <li><a href="#">Pengembalian dana</a></li>
+              <li><a href="#">Keamanan</a></li>
+              <li><a href="#">Penghargaan</a></li>
             </ul>
           </div>
           <div class="col-12 col-lg-3">
-            <h5>COMPANY</h5>
+            <h5>PERUSAHAAN</h5>
             <ul class="list-unstyled">
-              <li><a href="#">Career</a></li>
-              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Karir</a></li>
+              <li><a href="#">Pusat Bantuan</a></li>
               <li><a href="#">Media</a></li>
             </ul>
           </div>
           <div class="col-12 col-lg-3">
-            <h5>GET CONNECTED</h5>
+            <h5>Kontak</h5>
             <ul class="list-unstyled">
               <li><a href="#">Bogor</a></li>
               <li><a href="#">Indonesia</a></li>

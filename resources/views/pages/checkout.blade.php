@@ -14,7 +14,7 @@
                 Paket Travel
               </li>
               <li class="breadcrumb-item">
-                Details
+                Detail
               </li>
               <li class="breadcrumb-item active">
                 Checkout
@@ -33,19 +33,19 @@
                   </div>
               @endforeach
             @endif
-            <h1>Who is Going?</h1>
+            <h1>Siapa yang pergi?</h1>
             <p>
-              Trip to Ubud, Bali, Indonesia
+              Perjalanan ke Ubud, Bali, Indonesia
             </p>
             <div class="attendee">
               <table class="table table-responsive-sm text-center">
                 <thead>
                   <tr>
                     <td>Picture</td>
-                    <td>Name</td>
-                    <td>Nationality</td>
-                    <td>Visa</td>
-                    <td>Passport</td>
+                    <td>Nama</td>
+                    <td>Kebangsaan</td>
+                    <td>VISA</td>
+                    <td>Paspor</td>
                     <td></td>
                   </tr>
                 </thead>
@@ -65,7 +65,7 @@
                               {{ $detail->is_visa ? '30 Days' : 'N/A' }}
                           </td>
                           <td class="align-middle">
-                              {{ \Carbon\Carbon::createFromDate($detail->doe_passport) > \Carbon\Carbon::now() ? 'Active' : 'Inactive' }}
+                              {{ \Carbon\Carbon::createFromDate($detail->doe_passport) > \Carbon\Carbon::now() ? 'Aktif' : 'Tidak Aktif' }}
                           </td>
                           <td class="align-middle">
                               <a href="{{ route('checkout-remove', $detail->id) }}">
@@ -84,8 +84,8 @@
               </table>
             </div>
             <div class="member mt-3">
-              <h2>Add Member</h2>
-              <form class="form-inline" method="post" action="{{ route('checkout-create', $item->id) }}">
+              <h2>Tambahkan peserta</h2>
+              <form class="form-inline my-2" method="post" action="{{ route('checkout-create', $item->id) }}">
                 @csrf
                 <label for="username" class="sr-only">Name</label>
                 <input
@@ -119,7 +119,7 @@
                 </select>
 
                 <label for="doePassport" class="sr-only"
-                  >DOE Passport</label
+                  >DOE paspor</label
                 >
                 <div class="input-group mb-2 mr-sm-2">
                   <input
@@ -127,64 +127,55 @@
                     name="doe_passport"
                     class="form-control datepicker"
                     id="doePassport"
-                    placeholder="DOE Passport"
+                    placeholder="DOE paspor"
                   />
                 </div>
 
                 <button type="submit" class="btn btn-add-now mb-2 px-4">
-                  Add Now
+                  Tambah
                 </button>
               </form>
-              <h3 class="mt-2 mb-0">Note</h3>
+              <h3 class="mt-2 mb-0">Catatan</h3>
               <p class="disclaimer mb-0">
-                You are only able to invite member that has registered in
-                Nomads.
+                Anda hanya dapat mengundang peserta yang telah terdaftar.
               </p>
             </div>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="card card-details card-right">
-            <h2>Checkout Informations</h2>
+            <h2>Informasi Checkout</h2>
             <table class="trip-informations">
               <tr>
-                <th width="50%">Members</th>
+                <th width="50%">Peserta</th>
                 <td width="50%" class="text-right">
-                  {{ $item->details->count() }} person
+                  {{ $item->details->count() }} orang
                 </td>
               </tr>
               <tr>
-                <th width="50%">Additional VISA</th>
+                <th width="50%">Tambahan VISA</th>
                 <td width="50%" class="text-right">
-                  Rp. {{ $item->additional_visa }},00
+                  {{ numfmt_format_currency(numfmt_create( 'id_ID', NumberFormatter::CURRENCY ), $item->additional_visa, "IDR") }}
                 </td>
               </tr>
               <tr>
-                <th width="50%">Trip Price</th>
+                <th width="50%">Harga Paket</th>
                 <td width="50%" class="text-right">
-                  Rp. {{ $item->travel_package->price }},00 / person
+                  {{ numfmt_format_currency(numfmt_create( 'id_ID', NumberFormatter::CURRENCY ), $item->travel_package->price, "IDR") }} / orang
                 </td>
               </tr>
               <tr>
-                <th width="50%">Sub Total</th>
-                <td width="50%" class="text-right">
-                  Rp. {{ $item->transaction_total }},00
-                </td>
-              </tr>
-              <tr>
-                <th width="50%">Total (+Unique)</th>
+                <th width="50%">Total</th>
                 <td width="50%" class="text-right text-total">
-                  <span class="text-blue">Rp. {{ $item->transaction_total }},</span
-                  ><span class="text-orange">{{ mt_rand(0,99) }}</span>
+                  <span class="text-blue">{{ numfmt_format_currency(numfmt_create( 'id_ID', NumberFormatter::CURRENCY ), $item->transaction_total, "IDR") }}</span>
                 </td>
               </tr>
             </table>
 
             <hr />
-            <h2>Payment Instructions</h2>
+            <h2>Instruksi pembayaran</h2>
             <p class="payment-instructions">
-              Please complete your payment before to continue the wonderful
-              trip
+              Harap selesaikan pembayaran Anda sebelum melanjutkan perjalanan yang menyenangkan
             </p>
             <div class="bank">
               <div class="bank-item pb-3">
@@ -223,12 +214,12 @@
           </div>
           <div class="join-container">
             <a href="{{ route('checkout-success', $item->id) }}" class="btn btn-block btn-join-now mt-3 py-2">
-              I Have Made Payment
+              Saya Telah Melakukan Pembayaran
             </a>
           </div>
           <div class="text-center mt-3">
             <a href="{{ route('detail', $item->travel_package->slug) }}" class="text-muted">
-              Cancel Booking
+              Batalkan Pemesanan
             </a>
           </div>
         </div>

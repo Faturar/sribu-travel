@@ -1,0 +1,7 @@
+user
+    name
+    username
+    email
+    email verified
+    nomor telepon
+    password
