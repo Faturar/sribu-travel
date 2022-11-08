@@ -35,7 +35,7 @@
             @endif
             <h1>Siapa yang pergi?</h1>
             <p>
-              Perjalanan ke Ubud, Bali, Indonesia
+              Perjalanan {{ $item->travel_package->title }}
             </p>
             <div class="attendee">
               <table class="table table-responsive-sm text-center">
@@ -43,7 +43,7 @@
                   <tr>
                     <td>Picture</td>
                     <td>Nama</td>
-                    <td>Kebangsaan</td>
+                    <td>Vaksin</td>
                     <td>VISA</td>
                     <td>Paspor</td>
                     <td></td>
@@ -59,10 +59,10 @@
                               {{ $detail->username }}
                           </td>
                           <td class="align-middle">
-                              {{ $detail->nationality }}
+                              {{ $detail->is_vaksin ? 'Sudah' : 'Belum' }}
                           </td>
                           <td class="align-middle">
-                              {{ $detail->is_visa ? '30 Days' : 'N/A' }}
+                              {{ $detail->is_visa ? 'Ada' : 'Tidak Ada' }}
                           </td>
                           <td class="align-middle">
                               {{ \Carbon\Carbon::createFromDate($detail->doe_passport) > \Carbon\Carbon::now() ? 'Aktif' : 'Tidak Aktif' }}
@@ -85,6 +85,9 @@
             </div>
             <div class="member mt-3">
               <h2>Tambahkan peserta</h2>
+              <p class="disclaimer mb-0">
+                Anda hanya dapat mengundang peserta yang telah terdaftar.
+              </p>
               <form class="form-inline my-2" method="post" action="{{ route('checkout-create', $item->id) }}">
                 @csrf
                 <label for="username" class="sr-only">Name</label>
@@ -96,26 +99,36 @@
                   placeholder="Username"
                 />
 
-              <label for="nationality" class="sr-only">Name</label>
-              <input
+                <input
                   type="text"
                   name="nationality"
                   class="form-control mb-2 mr-sm-2"
-                  style="width: 50px;"
-                  id="inputNationality"
-                  placeholder="Nationality"
-              />
+                  value="ID"
+                  hidden
+                />
+
+                <label for="is_vaksin" class="sr-only">Visa</label>
+                <select
+                  name="is_vaksin"
+                  id="is_vaksin"
+                  class="custom-select mb-2 mr-sm-2"
+                  required
+                >
+                  <option value="" selected>Vaksin</option>
+                  <option value="1">Sudah</option>
+                  <option value="0">Belum</option>
+                </select>
 
                 <label for="is_visa" class="sr-only">Visa</label>
                 <select
                   name="is_visa"
-                  id="inputVisa"
+                  id="is_visa"
                   class="custom-select mb-2 mr-sm-2"
                   required
                 >
                   <option value="" selected>VISA</option>
-                  <option value="1">30 Days</option>
-                  <option value="0">N/A</option>
+                  <option value="1">Ada</option>
+                  <option value="0">Tidak Ada</option>
                 </select>
 
                 <label for="doePassport" class="sr-only"
@@ -135,10 +148,7 @@
                   Tambah
                 </button>
               </form>
-              <h3 class="mt-2 mb-0">Catatan</h3>
-              <p class="disclaimer mb-0">
-                Anda hanya dapat mengundang peserta yang telah terdaftar.
-              </p>
+              
             </div>
           </div>
         </div>

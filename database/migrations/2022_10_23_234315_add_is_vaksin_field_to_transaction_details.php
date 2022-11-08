@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAdditionalVaksinToTransactions extends Migration
+class AddIsVaksinFieldToTransactionDetails extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddAdditionalVaksinToTransactions extends Migration
      */
     public function up()
     {
-        Schema::table('transactions', function (Blueprint $table) {
-            $table->string('additional_vaksin');
+        Schema::table('transaction_details', function (Blueprint $table) {
+            $table->boolean('is_vaksin');
         });
     }
 
@@ -25,8 +25,8 @@ class AddAdditionalVaksinToTransactions extends Migration
      */
     public function down()
     {
-        Schema::table('transactions', function (Blueprint $table) {
-            $table->string('additional_vaksin');
+        Schema::table('transaction_details', function (Blueprint $table) {
+            $table->dropColumn('is_vaksin');
         });
     }
 }

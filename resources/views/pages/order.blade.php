@@ -54,6 +54,7 @@ SRIBU
                         <th>No</th>
                         <th>Paket</th>
                         <th>Tambahan VISA</th>
+                        <th>Tambahan Vaksin</th>
                         <th>Total Harga</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -61,10 +62,24 @@ SRIBU
                   </thead>
                   <tbody>
                     @forelse($items as $key => $item)
-                      <tr>
+                      @if ($item->transaction_status != 'CANCEL')
+                        <tr>
                           <td>{{ $key+1 }}</td>
                           <td>{{ $item->travel_package->title }}</td>
-                          <td>{{ numfmt_format_currency(numfmt_create( 'id_ID', NumberFormatter::CURRENCY ), $item->additional_visa, "IDR") }}</td>
+                          <td>
+                            @if ($item->additional_visa)
+                              Rp 500.000,00
+                            @else
+                              Rp 0
+                            @endif
+                          </td>
+                          <td>
+                            @if ($item->additional_vaksin)
+                              Rp 300.000,00
+                            @else
+                              Rp 0
+                            @endif
+                          </td>
                           <td>{{ numfmt_format_currency(numfmt_create( 'id_ID', NumberFormatter::CURRENCY ), $item->transaction_total, "IDR") }}</td>
                           <td class="text-center">
                             @if ($item->transaction_status == 'CANCEL')
@@ -79,18 +94,22 @@ SRIBU
                                 <span class="badge badge-secondary">{{ $item->transaction_status }}</span>
                             @endif
                           <td class="d-flex">
-                              <button onclick="showDetail({{ $item->id }})" class="mr-1 btn btn-primary" data-toggle="modal" data-target="#orderDetail">
+                              <button onclick="showDetail({{ $item->id }})" class="mr-1 btn btn-info" data-toggle="modal" data-target="#orderDetail">
                                   <i class="fa fa-eye"></i>
                               </button>
-                              <button onclick="showPayment({{ $item->id }})" class="mr-1 btn btn-info" data-toggle="modal" data-target="#payTransaction">
+                              @if ($item->transaction_status == 'IN_CART')
+                                <button onclick="showPayment({{ $item->id }})" class="mr-1 btn btn-primary" data-toggle="modal" data-target="#payTransaction">
                                   <i class="fa fa-credit-card"></i>
-                              </button>
-                              <button class="btn btn-danger" data-toggle="modal" data-target="#deleteOrder">
-                                <i class="fa fa-times"></i>
-                              </button>
+                                </button>
+                              @endif
+                              @if ($item->transaction_status != 'CANCEL')
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteOrder{{ $item->id }}">
+                                  <i class="fa fa-times"></i>
+                                </button>
+                              @endif
 
                               <!-- Delete Order Modal -->
-                              <div class="modal fade bd-example-modal-sm" id="deleteOrder" tabindex="-1" role="dialog" aria-labelledby="orderDetail" aria-hidden="true">
+                              <div class="modal fade bd-example-modal-sm" id="deleteOrder{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="orderDetail" aria-hidden="true">
                                 <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -120,7 +139,8 @@ SRIBU
                                 </div>
                               </div>
                           </td>
-                      </tr>
+                        </tr>
+                      @endif
                     @empty
                         <td colspan="7" class="text-center">
                             Data Kosong
@@ -364,8 +384,8 @@ SRIBU
               <th>ID</th>
               <th>Nama</th>
               <th>Nationality</th>
-              <th>Visa</th>
               <th>Vaksin</th>
+              <th>VISA</th>
               <th>DOE Passport</th>
             </tr>`;
 
@@ -376,8 +396,8 @@ SRIBU
                 <td>${detail.id}</td>
                 <td>${detail.username}</td>
                 <td>${detail.nationality}</td>
-                <td>${detail.is_visa ? '30 Days' : 'N/A'}</td>
-                <td>${detail.is_visa ? '30 Days' : 'N/A'}</td>
+                <td>${detail.is_vaksin ? 'Sudah' : 'Belum'}</td>
+                <td>${detail.is_visa ? 'Ada' : 'Tidak Ada'}</td>
                 <td>${detail.doe_passport}</td>
               </tr>
             `

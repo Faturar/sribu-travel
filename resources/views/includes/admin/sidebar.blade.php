@@ -51,6 +51,8 @@
         <span>User</span></a>
     </li>
     <hr class="sidebar-divider">
+  @else
+    <li></li>
   @endif
 
   <!-- Sidebar Toggler (Sidebar) -->

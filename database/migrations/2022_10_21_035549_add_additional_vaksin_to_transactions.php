@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategorysTable extends Migration
+class AddAdditionalVaksinToTransactions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateCategorysTable extends Migration
      */
     public function up()
     {
-        Schema::create('categorys', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->string('additional_vaksin');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateCategorysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorys');
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->dropColumn('additional_vaksin');
+        });
     }
 }

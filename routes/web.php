@@ -87,10 +87,10 @@ Route::prefix('dashboard')
     ->namespace('Admin')
     ->group(function () {
         Route::get('/', 'DashboardController@index')
-            ->name('dashboard');
-            // ->middleware('admin', 'super_admin');
+            ->name('dashboard')
+            ->middleware(['auth', 'admin', 'super_admin']);
 
-        Route::middleware(['admin', 'super_admin'])->group(function () {
+        Route::middleware(['auth', 'admin', 'super_admin'])->group(function () {
             Route::resource('travel-package', 'TravelPackageController');
 
             Route::resource('gallery', 'GalleryController');

@@ -20,6 +20,7 @@
                           <th>Travel</th>
                           <th>User</th>
                           <th>Visa</th>
+                          <th>Vaksin</th>
                           <th>Total</th>
                           <th>Status</th>
                           <th>Action</th>
@@ -31,7 +32,16 @@
                               <td>{{ $key+1 }}</td>
                               <td>{{ $item->travel_package->title }}</td>
                               <td>{{ $item->user->name }}</td>
-                              <td>{{ numfmt_format_currency(numfmt_create( 'id_ID', NumberFormatter::CURRENCY ), $item->additional_visa, "IDR") }}</td>
+                                @if ($item->additional_visa)
+                                    <td>Rp 500.000,00</td>
+                                @else
+                                    <td>Rp 0</td>
+                                @endif
+                                @if ($item->additional_vaksin)
+                                <td>Rp 500.000,00</td>
+                                @else
+                                    <td>Rp 0</td>
+                                @endif
                               <td>{{ numfmt_format_currency(numfmt_create( 'id_ID', NumberFormatter::CURRENCY ), $item->transaction_total, "IDR") }}</td>
                               <td>
                                 @if ($item->transaction_status == 'PENDING')

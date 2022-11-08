@@ -43,7 +43,9 @@
                                 @endif
                               </td>
                               <td>
-                                @if ($item->roles == 'ADMIN')
+                                @if($item->roles == 'SUPER_ADMIN')
+                                    <span class="badge badge-primary">Super Admin</span>
+                                @elseif ($item->roles == 'ADMIN')
                                     <span class="badge badge-primary">Admin</span>
                                 @else
                                     <span class="badge badge-secondary">User</span>

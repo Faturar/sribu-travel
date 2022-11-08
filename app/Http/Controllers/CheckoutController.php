@@ -38,6 +38,7 @@ class CheckoutController extends Controller
             'username' => Auth::user()->username,
             'nationality' => 'ID',
             'is_visa' => false,
+            'is_vaksin' => false,
             'doe_passport' => Carbon::now()->addYears(5)
         ]);
 
@@ -76,19 +77,25 @@ class CheckoutController extends Controller
         $data = $request->all();
         $data['transactions_id'] = $id;
 
-        TransactionDetail::create($data);
-
         $transaction = Transaction::with(['travel_package'])->find($id);
 
-        if($request->is_visa)
+        if(!$request->is_visa)
         {
             $transaction->transaction_total += 500000;
-            $transaction->additional_visa += 500000;
+            $transaction->additional_visa = 1;
+        }
+
+        if(!$request->is_vaksin)
+        {
+            $transaction->transaction_total += 300000;
+            $transaction->additional_vaksin = 1;
         }
 
         $transaction->transaction_total += $transaction->travel_package->price;
 
         $transaction->save();
+
+        TransactionDetail::create($data);
 
         return redirect()->route('checkout', $id);
     }

@@ -76,8 +76,8 @@
                                     <tr>
                                         <td>{{ $detail->id }}</td>
                                         <td>{{ $detail->username }}</td>
-                                        <td>{{ $detail->nationality }}</td>
-                                        <td>{{ $detail->is_visa ? '30 Days' : 'N/A' }}</td>
+                                        <td>{{ $detail->is_vaksin ? 'Sudah' : 'Belum' }}</td>
+                                        <td>{{ $detail->is_visa ? 'Ada' : 'Tidak Ada' }}</td>
                                         <td>{{ $detail->doe_passport }}</td>
                                     </tr>
                                 @endforeach
