@@ -25,23 +25,23 @@ Route::get('/detail/{slug}', 'DetailController@index')
 // Checkout
 Route::post('/checkout/{id}', 'CheckoutController@process')
     ->name('checkout_process')
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth']);
 
 Route::get('/checkout/{id}', 'CheckoutController@index')
     ->name('checkout')
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth']);
 
 Route::post('/checkout/create/{detail_id}', 'CheckoutController@create')
     ->name('checkout-create')
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth']);
 
 Route::get('/checkout/remove/{detail_id}', 'CheckoutController@remove')
     ->name('checkout-remove')
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth']);
 
 Route::get('/checkout/confirm/{id}', 'CheckoutController@success')
     ->name('checkout-success')
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth']);
     
 
 
@@ -88,9 +88,9 @@ Route::prefix('dashboard')
     ->group(function () {
         Route::get('/', 'DashboardController@index')
             ->name('dashboard')
-            ->middleware(['auth', 'admin', 'super_admin']);
+            ->middleware(['auth', 'admin']);
 
-        Route::middleware(['auth', 'admin', 'super_admin'])->group(function () {
+        Route::middleware(['auth', 'admin'])->group(function () {
             Route::resource('travel-package', 'TravelPackageController');
 
             Route::resource('gallery', 'GalleryController');
@@ -99,7 +99,7 @@ Route::prefix('dashboard')
         });
 
         Route::resource('user', 'UserController')
-            ->middleware(['auth', 'super_admin']);
+            ->middleware(['auth', 'admin']);
     });
 
     
