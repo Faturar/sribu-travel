@@ -24,12 +24,16 @@
                           <th>Gambar</th>
                           <th>Action</th>
                       </tr>
-                      </thead>
+                      </thead> 
                       <tbody>
                         @forelse($items as $key => $item)
                           <tr>
                               <td>{{ $key+1 }}</td>
-                              <td>{{ $item->travel_package->title }}</td>
+                              @if($item->travel_package)
+                                <td>{{ $item->travel_package->title }}</td>
+                              @else
+                                <td></td>
+                              @endif
                               <td>
                                   <img src="{{ Storage::url($item->image) }}" alt="" style="max-height: 200px" class="img-fluid">
                               </td>
