@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\GalleryRequest;
 use App\Gallery;
 use App\TravelPackage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class GalleryController extends Controller
@@ -114,6 +115,9 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         $item = Gallery::findorFail($id);
+
+        Storage::disk('public')->delete($item->image);
+
         $item->delete();
 
         return redirect()->route('gallery.index');
