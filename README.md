@@ -7,7 +7,7 @@ php 7.2
 Download atau clone project dari github:
 
 ```sh
-git clone https://github.com/Faturar/SRIBU-TRAVEL
+git clone https://github.com/Faturar/sribu-travel.git
 ```
 
 ```sh
