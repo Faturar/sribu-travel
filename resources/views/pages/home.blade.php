@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-SRIBU
+  Boza Tour Travel
 @endsection
 
 @section('content')
@@ -174,12 +174,12 @@ SRIBU
               />
               <h3 class="mb-4">Ahmad Sofian</h3>
               <p class="testimonial">
-                “ Luar biasa dan saya tidak bisa berhenti untuk mengatakan wow untuk setiap momen Terimakasih “
+                “ Pengalaman beribadah yang sangat menyenangkan bersama  “
               </p>
             </div>
             <hr />
             <p class="trip-to mt-2">
-              Perjalanan ke Ubud
+              Perjalanan Umrah
             </p>
           </div>
         </div>

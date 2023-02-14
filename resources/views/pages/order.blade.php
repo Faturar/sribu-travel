@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-SRIBU
+Order - Boza Tour Travel
 @endsection
 
 @section('content')

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Detail Travel')
+@section('title', 'Detail - Boza Tour Travel')
 
 @section('content')
 <main>
