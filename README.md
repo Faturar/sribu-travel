@@ -1,6 +1,27 @@
-## Website Sribu Travel
+## Screenshoot
+![Sribu Travel](https://github.com/Faturar/sribu-travel/blob/main/screenshoot.png "Sribu Travel")
 
-#### requires
+## Deskripsi
+Just a personal project for study. 
+
+## User
+/login
+admin:
+user: admin@admin.com
+pass: 12345678
+
+## Demo
+https://sribu.faturar.my.id
+
+## Techstack
+- Laravel 6
+- Bootstrap 4
+
+## Feature
+
+
+
+## Install
 
 php 7.2
 
