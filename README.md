@@ -5,9 +5,8 @@
 Just a personal project for study. 
 
 ## User
-/login
-admin:
-user: admin@admin.com
+/login<br>
+user: admin@admin.com<br>
 pass: 12345678
 
 ## Demo
