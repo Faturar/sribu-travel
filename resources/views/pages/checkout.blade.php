@@ -1,5 +1,5 @@
 @extends('layouts.checkout')
-@section('title', 'Checkout - Boza Tour Travel')
+@section('title', 'Checkout - Sribu Tour Travel')
 
 @section('content')
 <main>
